@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sample-cm
+data:
+  color: red
+  properties: |
+    shape=triangle,square
+  base.configuration: |
+    steps=25

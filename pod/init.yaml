@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: init
+spec:
+  initContainers:
+    - name: busybox-init
+      image: busybox
+      command: ['sh', '-c', 'echo test > /etc/test_out/my_test.txt']
+      volumeMounts:
+        - name: test
+          mountPath: /etc/test_out
+  containers:
+  - image: busybox
+    name: init
+    command: ['sh', '-c', 'cat /etc/test_in/my_test.txt']
+    volumeMounts:
+      - mountPath: /etc/test_in
+        name: test
+    resources: {}
+  restartPolicy: Never
+  volumes:
+    - name: test
+      emptyDir: {}
