@@ -39,6 +39,13 @@ kubectl create secret [flags] [options]
 
 e.g. kubectl create secret generic NAME --from-literal=password=very_complex $do > literal.yaml
 
+### Service
+kubectl create service [flags] [options]
+
+e.g. kubectl create service TYPE NAME --tcp=80 $do > my-svc.yaml
+
+or e.g. kubectl expose deployment NAME --type=NodePort --port=9000
+
 ## Get a Shell to a Running Container
 [Documentation](https://kubernetes.io/docs/tasks/debug/debug-application/get-shell-running-container/)
 

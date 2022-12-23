@@ -1,0 +1,20 @@
+# targets pods with label 'app: nginx-deployment' and that have port 80 open (targetPort)
+# service can be reached within cluster with SVC.NS:PORT, e.g. nginx-nodeport.default:8080 or nginx-nodeport:8080
+# from a node it can be reached e.g. with 'curl localhost:30080' or via NODE_IP:NodePort
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nginx-nodeport
+  name: nginx-nodeport
+spec:
+  ports:
+  - name: nginx-clusterip
+    nodePort: 30080
+    port: 8080
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: nginx-deployment
+  type: NodePort
+
