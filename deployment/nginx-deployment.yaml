@@ -11,6 +11,7 @@ spec:
       app: nginx-deployment
   template:
     metadata:
+      name: nginx
       labels:
         app: nginx-deployment
     spec:
