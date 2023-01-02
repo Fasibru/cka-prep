@@ -54,7 +54,14 @@ or e.g. kubectl expose deployment NAME --type=NodePort --port=9000
 ## Get a Shell to a Running Container
 [Documentation](https://kubernetes.io/docs/tasks/debug/debug-application/get-shell-running-container/)
 
-kubectl exec -i -t NAME --container CONTAINER_NAME -- sh -c "clear; (bash || ash || sh)"
+kubectl exec --it POD_NAME --container CONTAINER_NAME -- sh
+
+or
+
+kubectl exec -i -t POD_NAME --container CONTAINER_NAME -- sh -c "clear; (bash || ash || sh)"
+
+### Interactive Throw-Away Pod for e.g. Debugging
+kubectl run -it --image nicolaka/netshoot dns-test --restart=Never --rm
 
 ## kubectl Cheat Sheet
 https://kubernetes.io/docs/reference/kubectl/cheatsheet/
