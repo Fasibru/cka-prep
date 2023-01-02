@@ -1,0 +1,26 @@
+# based on https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+  - host: hello-world.info
+    http:
+      paths:
+      - backend:
+          service:
+            name: web
+            port:
+              number: 8080
+        path: /
+        pathType: Prefix
+      - backend:
+          service:
+            name: web2
+            port:
+              number: 8080
+        pathType: Prefix
+        path: /v2

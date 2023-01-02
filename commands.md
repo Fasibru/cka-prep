@@ -27,6 +27,11 @@ kubectl create deployment NAME --image=IMAGE -- [COMMAND] [args...] [options]
 
 e.g.: kubectl create deployment NAME --image=image $do > my-deployment.yaml
 
+### Ingress
+kubectl create ingress NAME --rule=host/path=service:port[,tls[=secret]]  [options]
+
+e.g. kubectl create ingress example-ingress --rule=hello-world.info/=web:8080 $do > hello-world-ingress.yaml
+
 ### Pod
 kubectl run NAME --image=image [--env="key=value"] [--port=port]
 [--dry-run=server|client] [--overrides=inline-json] [--command] -- [COMMAND]
