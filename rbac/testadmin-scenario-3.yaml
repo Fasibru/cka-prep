@@ -1,0 +1,16 @@
+# based on https://learnk8s.io/rbac-kubernetes
+# check access via `kubectl auth can-i get pods -n test3 --as=system:serviceaccount:test1:myaccount`
+# should only have access to namespace test3
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: testadminbinding
+  namespace: test3
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin # built-in ClusterRole in k8s
+subjects:
+- kind: ServiceAccount
+  name: myaccount
+  namespace: test1

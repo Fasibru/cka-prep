@@ -1,0 +1,6 @@
+# based on https://learnk8s.io/rbac-kubernetes
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: myaccount
+  namespace: test1

@@ -33,12 +33,19 @@ kubectl create ingress NAME --rule=host/path=service:port[,tls[=secret]]  [optio
 e.g. kubectl create ingress example-ingress --rule=hello-world.info/=web:8080 $do > hello-world-ingress.yaml
 
 ### Pod
-kubectl run NAME --image=image [--env="key=value"] [--port=port]
-[--dry-run=server|client] [--overrides=inline-json] [--command] -- [COMMAND]
-[args...] [options]
+kubectl run NAME --image=image [--env="key=value"] [--port=port] [--dry-run=server|client] [--overrides=inline-json] [--command] -- [COMMAND] [args...] [options]
 
 e.g.: kubectl run nginx --image=nginx $do > my-pod.yaml
 
+### Role
+kubectl create role NAME --verb=verb --resource=resource.group/subresource [--resource-name=resourcename] [--dry-run=server|client|none] [options]
+
+e.g. kubectl create role testadmin --verb='*' --resource='*' $do > my-role.yaml
+
+### RoleBinding
+kubectl create rolebinding NAME --clusterrole=NAME|--role=NAME [--user=username] [--group=groupname] [--serviceaccount=namespace:serviceaccountname] [--dry-run=server|client|none] [options]
+
+e.g. ubectl create rolebinding testadminbinding --role=testadmin --serviceaccount=test1:myaccount $do > tastadmin-role-binding.yaml
 ### Secret
 kubectl create secret [flags] [options]
 

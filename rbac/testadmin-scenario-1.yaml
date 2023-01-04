@@ -1,0 +1,30 @@
+# based on https://learnk8s.io/rbac-kubernetes
+# check access via `kubectl auth can-i get pods -n test1 --as=system:serviceaccount:test1:myaccount`
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: testadmin
+  namespace: test1
+rules:
+- apiGroups:
+  - '*'
+  resources:
+  - '*'
+  verbs:
+  - '*'
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: testadminbinding
+  namespace: test1
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: testadmin
+subjects:
+- kind: ServiceAccount
+  name: myaccount
+  namespace: test1
