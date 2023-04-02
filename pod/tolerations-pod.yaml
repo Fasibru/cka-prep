@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: tolerations
+  name: tolerations
+spec:
+  containers:
+  - image: nginx
+    name: tolerations
+  tolerations:
+  - key: workload
+    value: app
+    effect: "NoSchedule"
+  restartPolicy: Always

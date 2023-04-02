@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: tolerations
+  name: tolerations
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: tolerations
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: tolerations
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
+      tolerations:
+        - key: workload
+          value: app
+          effect: NoSchedule

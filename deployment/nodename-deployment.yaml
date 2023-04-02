@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: nodename
+  name: nodename
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nodename
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: nodename
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
+      nodeName: 3-node-cluser-m03
+status: {}
