@@ -100,7 +100,7 @@ kubectl run -it --image nicolaka/netshoot dns-test --restart=Never --rm
 ## kubectl Cheat Sheet
 https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 
-## Taints and Tolerations
+## Taints/Tolerations, nodeSelector, nodeName
 
 ### Taint
 ```
@@ -108,10 +108,34 @@ kubectl taint nodes NODE_NAME KEY_1=VAL_1:TAINT_EFFECT_1 ... KEY_N=VAL_N:TAINT_E
 ```
 
 ### Tolerations
-```
+Pod specification:
+```yaml
 tolerations:
 - key: "key1"
-  operator: "Equal"
+  # operator: "Equal" # set only if `value` not specified
   value: "value1"
   effect: "NoSchedule"
+```
+
+> effect: `NoSchedule` | `PreferNoSchedule` | `NoExecute`
+
+### nodeSelector
+Select node by label in pod specification:
+
+```yaml
+spec:
+	containers:
+	- ...
+	nodeSelector:
+		<LabelKey>: <LabelValue>
+```
+
+### nodeName
+Select node by name in pod specification:
+
+```yaml
+spec:
+	containers:
+	- ...
+	nodeName: <NodeName>
 ```
