@@ -139,3 +139,19 @@ spec:
 	- ...
 	nodeName: <NodeName>
 ```
+
+## Scale Deployment
+```
+kubectl scale --replicas=<REPLICAS> deployment/<DEPLOYMENT_NAME> 
+```
+
+## Rollback Deployment
+Check rollout status: `kubectl rollout status deployment/<DEPLOYMENT_NAME>`
+
+Check rollout history: `kubectl rollout history deployment/<DEPLOYMENT_NAME>`
+
+Check revision details: `kubectl rollout history deployment/<DEPLOYMENT_NAME>` --revison=<NUMBER>
+
+Rollback to previous revision: `kubectl rollout undo deployment/<DEPLOYMENT_NAME>`
+
+Rollback to specific revision: `kubectl rollout undo deployment/<DEPLOYMENT_NAME> --to-revision=<NUMBER>`
