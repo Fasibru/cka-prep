@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-bar-nginx
+  namespace: foo
+spec:
+  podSelector:
+    matchLabels:
+      run: netshoot-foo
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          app: nginx-bar

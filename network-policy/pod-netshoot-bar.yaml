@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: netshoot-bar
+  name: netshoot-bar
+  namespace: bar
+spec:
+  containers:
+  - image: nicolaka/netshoot
+    name: netshoot-bar
+    command: ['sh', '-c', 'while true; do sleep 3600; done']
