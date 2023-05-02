@@ -155,3 +155,9 @@ Check revision details: `kubectl rollout history deployment/<DEPLOYMENT_NAME>` -
 Rollback to previous revision: `kubectl rollout undo deployment/<DEPLOYMENT_NAME>`
 
 Rollback to specific revision: `kubectl rollout undo deployment/<DEPLOYMENT_NAME> --to-revision=<NUMBER>`
+
+## crictl
+
+https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/
+
+Used to debug container runtimes on a node.
